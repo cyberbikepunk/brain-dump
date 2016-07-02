@@ -88,11 +88,10 @@ The problem with this approach is that now we've got two databases (ES on the cl
 
 Is this package the right place to explose a Python API for what needs or what purpose? This is a completely dumb question at this stage. Like they say: if you don't need it right now, don't implement it.
 
-
-authenticate
-upload datapackage tree to bucket  
-load data into postgres (need model) + to ES
-publish toggles a switch
+* authenticate OAuth plus a JWT string
+* upload datapackage tree to bucket  
+* load data into postgres (need model) and into ES
+* publish toggles (a switch)
 
 ## Metaphysical design questions going on in my head
 
@@ -143,3 +142,9 @@ Okay so we have a `DataPackage` class in the datapackage-py repo. But do we have
 ### DataPackage command
 
 A command line utility already exists. Could the logical thing to do be extending it?
+
+## Notes on OS-conductor
+
+### Secrets 
+
+The way secrets and keys are handled is really confusing. First: name things properly: some are for S3 and some for google. Next don't put google stuff into seperate files. Google OAuth info comes in a neat JSON file which has everything in it. 
